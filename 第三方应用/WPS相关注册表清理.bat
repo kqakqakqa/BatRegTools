@@ -1,7 +1,6 @@
 @echo off
 
-chcp 65001
-echo.
+chcp 65001 > nul
 
 net session >nul 2>&1
 if %errorlevel% neq 0 (
@@ -10,7 +9,7 @@ if %errorlevel% neq 0 (
   exit /b
 )
 
-echo WPS 云文档相关注册表清理
+echo WPS 相关注册表清理
 
 for /f "tokens=2 delims==" %%i in ('wmic useraccount where name^="%username%" get sid /value ^| find "="') do set SID=%%i
 
